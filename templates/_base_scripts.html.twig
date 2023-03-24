@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $( function() {
+       
+        $( "#form_fromdate" ).datepicker();
+        $( "#form_todate" ).datepicker();
+
+
+		$( "#reset" ).click(function() {
+			$( "input" ).each(function() {
+				$( this ).val('');
+			});
+		});
+    } );
+</script>

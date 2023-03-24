@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Jennifer Gonzalez Reinoso{% endblock %}</title>
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        {% include '_base_scripts.html.twig' %}
+
+    </head>
+    <body>
+        {% block body %}
+
+        {# Comienza el formulario para saber que quiere el usuario #}
+
+        {{ form_start(form) }}
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Tagged:</span>
+                            {{ form_row(form.tagged) }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Todate:</span>
+                            {{ form_row(form.todate) }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Fromdate:</span>
+                            {{ form_row(form.fromdate) }}
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-1">
+                        {{ form_row(form.send) }}
+                    </div>
+                    <div class="col-md-2">
+                        <button id="reset" type="button" class="btn btn-secondary">Resetear los campos</button>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+        {# Resultado de la búsqueda #}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h2>Resultados de la búsqueda</h2>
+                    {% if questions %}
+                        {% for question in questions %}
+                            <li>{{ question.title|e }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <p>No hay resultados para tu búsqueda.</p>
+                    {% endif %}
+                </div>
+                    
+            </div>
+        </div>
+
+        {% endblock %}
+    </body>
+</html>
